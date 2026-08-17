@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — RentWithRoy</title>
+<meta name="description" content="Apply to rent a car for UberEats, Deliveroo, DoorDash or personal use. Takes 2 minutes. No credit check. Approval within 24 hours.">
+<meta property="og:title" content="Apply — RentWithRoy">
+<meta property="og:description" content="Apply to rent. Takes 2 minutes. No credit check. Approval within 24 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-hero:#0A0A0A;--bg-dark2:#141414;--card-dark:#1E1E1E;--border-dark:#2A2A2A;
+  --gold:#C8A96E;--gold-hover:#D4B87A;--gold-tint:rgba(200,169,110,0.12);
+  --bg-light:#FAFAF7;--card-light:#FFFFFF;--border-light:#EDEDE8;
+  --text-heading:#0A0A0A;--text-body:#4A4A45;--text-muted:#8A8A82;
+  --text-offwhite:#F5F5F0;--text-muted-dark:rgba(245,245,240,0.55);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --danger:#a32d2d;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;font-weight:400;background:var(--bg-light);color:var(--text-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-heading);line-height:1.1;}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--text-offwhite);}
+p{color:var(--text-body);}
+.on-dark p{color:var(--text-muted-dark);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.container{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:500;display:inline-block;margin-bottom:14px;}
+.btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:15px 30px;border-radius:2px;display:inline-flex;align-items:center;gap:8px;transition:all 0.35s var(--ease);cursor:pointer;border:none;}
+.btn-gold{background:var(--gold);color:#0A0A0A;}
+.btn-gold:hover{background:var(--gold-hover);transform:translateY(-3px);box-shadow:0 12px 28px rgba(200,169,110,0.35);}
+.btn-outline{background:transparent;color:var(--text-offwhite);border:1px solid rgba(245,245,240,0.28);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.btn-outline.on-light{color:var(--text-heading);border-color:var(--border-light);}
+.btn-outline.on-light:hover{border-color:var(--gold);color:var(--gold);}
+body.page-exit{opacity:0;transition:opacity 0.25s ease;}
+body.page-enter{animation:fadeInBody 0.5s var(--ease);}
+@keyframes fadeInBody{from{opacity:0;}to{opacity:1;}}
+.announce{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--gold);color:#0A0A0A;text-align:center;font-size:13px;padding:9px 16px;font-weight:500;}
+.announce a{font-weight:700;text-decoration:underline;text-underline-offset:2px;margin-left:6px;white-space:nowrap;}
+.nav{position:fixed;top:36px;left:0;right:0;z-index:200;padding:20px 0;transition:all 0.4s ease;background:rgba(10,10,10,0.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}
+.nav.scrolled{padding:14px 0;box-shadow:0 8px 30px rgba(0,0,0,0.25);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 32px;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:14px;color:var(--text-muted-dark);transition:color 0.25s ease;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{display:flex;align-items:center;gap:20px;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.hamburger span{width:24px;height:2px;background:var(--text-offwhite);transition:0.3s;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateY(-100%);transition:transform 0.4s var(--ease);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--text-offwhite);}
+.mobile-menu .close-btn{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--text-offwhite);font-size:28px;cursor:pointer;}
+.logo{width:160px;}
+.logo.footer-logo{width:140px;}
+[data-anim]{opacity:0;}
+[data-anim="up"]{transform:translateY(50px);}
+[data-anim].in-view{opacity:1;transform:translate(0,0) scale(1);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease);}
+[data-delay="1"]{transition-delay:0.1s;}[data-delay="2"]{transition-delay:0.2s;}[data-delay="3"]{transition-delay:0.3s;}
+section{padding:100px 0;}
+.section-light{background:var(--bg-light);}
+.page-hero{position:relative;min-height:44vh;background:var(--bg-hero);display:flex;align-items:center;padding-top:130px;padding-bottom:50px;}
+.page-hero h1{font-size:clamp(38px,5.5vw,60px);letter-spacing:-2px;margin-bottom:16px;}
+.page-hero p{font-size:17px;max-width:520px;}
+footer{background:#070707;padding:60px 0 26px;}
+.footer-row1{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:26px;padding-bottom:34px;border-bottom:1px solid var(--border-dark);}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;list-style:none;}
+.footer-links a{font-size:13.5px;color:var(--text-muted-dark);}
+.footer-links a:hover{color:var(--gold);}
+.footer-meta{font-size:12.5px;color:var(--text-muted-dark);text-align:right;}
+.footer-row2{text-align:center;padding-top:26px;font-size:13px;color:var(--text-muted-dark);}
+.footer-note{text-align:center;font-size:11.5px;color:rgba(245,245,240,0.4);margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+/* Form */
+.form-wrap{max-width:680px;margin:0 auto;}
+.form-card{background:#FFFFFF;border:1px solid var(--border-light);border-radius:10px;padding:44px;}
+.form-group{margin-bottom:24px;}
+.form-group label{display:block;font-size:13.5px;font-weight:500;color:var(--text-heading);margin-bottom:8px;}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:13px 16px;border:1px solid var(--border-light);border-radius:4px;font-family:'Inter';font-size:14.5px;
+  background:var(--bg-light);transition:border-color 0.25s ease;color:var(--text-body);
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.checkbox-group{display:flex;flex-wrap:wrap;gap:10px;}
+.checkbox-item{display:flex;align-items:center;gap:8px;border:1px solid var(--border-light);border-radius:20px;padding:8px 16px;font-size:13.5px;cursor:pointer;transition:all 0.25s ease;}
+.checkbox-item:has(input:checked){border-color:var(--gold);background:var(--gold-tint);}
+.checkbox-item input{width:auto;margin:0;}
+.error-text{color:var(--danger);font-size:12.5px;margin-top:6px;display:none;}
+.error-text.show{display:block;}
+.form-note{font-size:13px;color:var(--text-muted);text-align:center;margin-top:22px;}
+.success-state{display:none;text-align:center;padding:50px 0;}
+.success-state.show{display:block;}
+.check-circle{width:72px;height:72px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;}
+
+/* What happens next */
+.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:820px;margin:40px auto 0;}
+.next-card{background:var(--card-dark);border:1px solid var(--border-dark);border-radius:8px;padding:26px;text-align:center;}
+.next-card .num{font-family:'Space Grotesk';font-weight:700;color:var(--gold);font-size:14px;margin-bottom:10px;}
+.next-card h4{font-size:15px;margin-bottom:6px;}
+.next-card p{font-size:13px;}
+
+@media (max-width:900px){
+  .next-grid{grid-template-columns:1fr;}
+  .form-card{padding:28px 22px;}
+  .nav-links{display:none;}
+  .nav-cta .btn{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{display:flex;}
+  .footer-row1{flex-direction:column;}
+  .footer-meta{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Now taking July 2026 applications — limited spots available.<a href="apply.html">Apply now →</a></div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="RentWithRoy home">
+      <svg class="logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="circleGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#141414"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#D4B87A"/></linearGradient></defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad)" stroke="#2A2A2A"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="5" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="39" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="41" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(200,169,110,0.22)"/>
+        <line x1="22" y1="9" x2="22" y2="16" stroke="rgba(200,169,110,0.22)"/><line x1="11" y1="29" x2="17" y2="25" stroke="rgba(200,169,110,0.22)"/><line x1="33" y1="29" x2="27" y2="25" stroke="rgba(200,169,110,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,245,240,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#2A2A2A"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F5F0">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad)"/><circle cx="80" cy="39" r="1.6" fill="#C8A96E"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="why-us.html">Why us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="apply.html" class="btn btn-gold active">Apply to rent →</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">×</button>
+  <a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="pricing.html">Pricing</a>
+  <a href="why-us.html">Why us</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+  <a href="apply.html" class="btn btn-gold" style="margin-top:12px;">Apply to rent →</a>
+</div>
+
+<header class="page-hero on-dark">
+  <div class="container">
+    <span class="eyebrow" data-anim="up">Apply</span>
+    <h1 data-anim="up" data-delay="1">Apply to rent.</h1>
+    <p data-anim="up" data-delay="2">Takes 2 minutes. No credit check. Approval within 24 hours.</p>
+  </div>
+</header>
+
+<section class="section-light">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-card">
+        <form id="applyForm" novalidate>
+          <div class="form-group">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" required>
+            <div class="error-text" id="err-fname">Enter your full name.</div>
+          </div>
+          <div class="form-group">
+            <label for="fphone">Phone number</label>
+            <input type="tel" id="fphone" required>
+            <div class="error-text" id="err-fphone">Enter a phone number.</div>
+          </div>
+          <div class="form-group">
+            <label for="femail">Email address</label>
+            <input type="email" id="femail" required>
+            <div class="error-text" id="err-femail">Enter a valid email address.</div>
+          </div>
+          <div class="form-group">
+            <label for="fsuburb">Suburb / postcode</label>
+            <input type="text" id="fsuburb" required>
+            <div class="error-text" id="err-fsuburb">Enter your suburb or postcode.</div>
+          </div>
+          <div class="form-group">
+            <label for="fvisa">Visa type</label>
+            <select id="fvisa" required>
+              <option value="">Select an option</option>
+              <option>Australian citizen/PR</option>
+              <option>Student visa</option>
+              <option>485 graduate visa</option>
+              <option>Other work visa</option>
+              <option>Other</option>
+            </select>
+            <div class="error-text" id="err-fvisa">Select your visa type.</div>
+          </div>
+          <div class="form-group">
+            <label for="flicence">Driver's licence type</label>
+            <select id="flicence" required>
+              <option value="">Select an option</option>
+              <option>Australian full licence</option>
+              <option>Overseas licence with translation</option>
+              <option>Other</option>
+            </select>
+            <div class="error-text" id="err-flicence">Select your licence type.</div>
+          </div>
+          <div class="form-group">
+            <label>Delivery platforms</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item"><input type="checkbox" name="platform" value="UberEats">UberEats</label>
+              <label class="checkbox-item"><input type="checkbox" name="platform" value="Deliveroo">Deliveroo</label>
+              <label class="checkbox-item"><input type="checkbox" name="platform" value="DoorDash">DoorDash</label>
+              <label class="checkbox-item"><input type="checkbox" name="platform" value="Personal">Personal use only</label>
+              <label class="checkbox-item"><input type="checkbox" name="platform" value="Other">Other</label>
+            </div>
+            <div class="error-text" id="err-platform">Select at least one option.</div>
+          </div>
+          <div class="form-group">
+            <label for="fstart">Preferred start date</label>
+            <input type="date" id="fstart" required>
+            <div class="error-text" id="err-fstart">Choose a preferred start date.</div>
+          </div>
+          <div class="form-group">
+            <label for="fhear">How did you hear about us</label>
+            <select id="fhear">
+              <option value="">Select an option</option>
+              <option>Facebook</option><option>Instagram</option><option>Google</option>
+              <option>Friend/referral</option><option>Gumtree</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fmessage">Message / questions (optional)</label>
+            <textarea id="fmessage"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;">Submit application →</button>
+          <p class="form-note">By submitting this form you agree that Roy may contact you regarding your rental application. No credit check is performed.</p>
+        </form>
+
+        <div class="success-state" id="applySuccess">
+          <div class="check-circle"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h2>Application received!</h2>
+          <p>Roy will be in touch within 24 hours to confirm next steps.</p>
+        </div>
+      </div>
+
+      <div class="next-grid" data-anim="up">
+        <div class="next-card"><div class="num">01</div><h4>Review</h4><p>Within 24 hours</p></div>
+        <div class="next-card"><div class="num">02</div><h4>Confirmation</h4><p>Call or message from Roy</p></div>
+        <div class="next-card"><div class="num">03</div><h4>Sign &amp; collect</h4><p>Pick up in Tarneit VIC</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row1">
+      <svg class="logo footer-logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="circleGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#141414"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+        <linearGradient id="goldGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#D4B87A"/></linearGradient></defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad2)" stroke="#2A2A2A"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="5" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="39" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="41" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(200,169,110,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad2)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,245,240,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#2A2A2A"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F5F0">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad2)"/><circle cx="80" cy="39" r="1.6" fill="#C8A96E"/>
+      </svg>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li><li><a href="how-it-works.html">How it works</a></li><li><a href="pricing.html">Pricing</a></li>
+        <li><a href="why-us.html">Why us</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-meta">ABN <!-- UPDATE: --> XX XXX XXX XXX<br>© 2026 RentWithRoy</div>
+    </div>
+    <div class="footer-row2">Pickup &amp; drop-off: Tarneit VIC 3029 · hello@rentwithroy.com.au <!-- UPDATE: --> · 0400 000 000 <!-- UPDATE: --></div>
+    <p class="footer-note">Commercial hire vehicle insurance held. Vehicles approved for food delivery and personal use only — not for Uber/DiDi rideshare.</p>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }, { passive: true });
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('[data-anim]').forEach(el => revealObserver.observe(el));
+
+const form = document.getElementById('applyForm');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  let valid = true;
+  const fields = ['fname','fphone','femail','fsuburb','fvisa','flicence','fstart'];
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    const err = document.getElementById('err-' + id);
+    if (!el.value.trim()) { err.classList.add('show'); el.style.borderColor = 'var(--danger)'; valid = false; }
+    else { err.classList.remove('show'); el.style.borderColor = ''; }
+  });
+  const emailVal = document.getElementById('femail').value.trim();
+  if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+    document.getElementById('err-femail').classList.add('show');
+    document.getElementById('femail').style.borderColor = 'var(--danger)';
+    valid = false;
+  }
+  const platforms = document.querySelectorAll('input[name="platform"]:checked');
+  const errPlatform = document.getElementById('err-platform');
+  if (platforms.length === 0) { errPlatform.classList.add('show'); valid = false; }
+  else { errPlatform.classList.remove('show'); }
+
+  if (!valid) return;
+
+  form.style.transition = 'opacity 0.3s ease';
+  form.style.opacity = '0';
+  setTimeout(() => {
+    form.style.display = 'none';
+    document.getElementById('applySuccess').classList.add('show');
+  }, 300);
+});
+document.querySelectorAll('#applyForm input, #applyForm select').forEach(el => {
+  el.addEventListener('input', () => {
+    const err = document.getElementById('err-' + el.id);
+    if (err) { err.classList.remove('show'); el.style.borderColor = ''; }
+  });
+});
+
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('wa.me')) {
+    link.addEventListener('click', (e) => { e.preventDefault(); document.body.classList.add('page-exit'); setTimeout(() => { window.location.href = href; }, 250); });
+  }
+});
+document.body.classList.add('page-enter');
+</script>
+</body>
+</html>

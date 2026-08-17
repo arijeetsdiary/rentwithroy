@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Choose Us — RentWithRoy</title>
+<meta name="description" content="Built for gig drivers, by someone who gets it. No credit check, flexible terms, direct owner support, and full insurance for delivery work.">
+<meta property="og:title" content="Why Choose Us — RentWithRoy">
+<meta property="og:description" content="Built for gig drivers. By someone who gets it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-hero:#0A0A0A;--bg-dark2:#141414;--card-dark:#1E1E1E;--border-dark:#2A2A2A;
+  --gold:#C8A96E;--gold-hover:#D4B87A;--gold-tint:rgba(200,169,110,0.12);
+  --bg-light:#FAFAF7;--card-light:#FFFFFF;--border-light:#EDEDE8;
+  --text-heading:#0A0A0A;--text-body:#4A4A45;--text-muted:#8A8A82;
+  --text-offwhite:#F5F5F0;--text-muted-dark:rgba(245,245,240,0.55);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;font-weight:400;background:var(--bg-light);color:var(--text-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-heading);line-height:1.1;}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--text-offwhite);}
+p{color:var(--text-body);}
+.on-dark p{color:var(--text-muted-dark);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.container{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:500;display:inline-block;margin-bottom:14px;}
+.btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;padding:15px 30px;border-radius:2px;display:inline-flex;align-items:center;gap:8px;transition:all 0.35s var(--ease);cursor:pointer;border:none;}
+.btn-gold{background:var(--gold);color:#0A0A0A;}
+.btn-gold:hover{background:var(--gold-hover);transform:translateY(-3px);box-shadow:0 12px 28px rgba(200,169,110,0.35);}
+.btn-outline{background:transparent;color:var(--text-offwhite);border:1px solid rgba(245,245,240,0.28);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.btn-outline.on-light{color:var(--text-heading);border-color:var(--border-light);}
+.btn-outline.on-light:hover{border-color:var(--gold);color:var(--gold);}
+body.page-exit{opacity:0;transition:opacity 0.25s ease;}
+body.page-enter{animation:fadeInBody 0.5s var(--ease);}
+@keyframes fadeInBody{from{opacity:0;}to{opacity:1;}}
+.announce{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--gold);color:#0A0A0A;text-align:center;font-size:13px;padding:9px 16px;font-weight:500;}
+.announce a{font-weight:700;text-decoration:underline;text-underline-offset:2px;margin-left:6px;white-space:nowrap;}
+.nav{position:fixed;top:36px;left:0;right:0;z-index:200;padding:20px 0;transition:all 0.4s ease;background:rgba(10,10,10,0.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);}
+.nav.scrolled{padding:14px 0;box-shadow:0 8px 30px rgba(0,0,0,0.25);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 32px;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:14px;color:var(--text-muted-dark);transition:color 0.25s ease;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{display:flex;align-items:center;gap:20px;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.hamburger span{width:24px;height:2px;background:var(--text-offwhite);transition:0.3s;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,0.98);z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:28px;transform:translateY(-100%);transition:transform 0.4s var(--ease);}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--text-offwhite);}
+.mobile-menu .close-btn{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--text-offwhite);font-size:28px;cursor:pointer;}
+.logo{width:160px;}
+.logo.footer-logo{width:140px;}
+[data-anim]{opacity:0;}
+[data-anim="up"]{transform:translateY(50px);}
+[data-anim="left"]{transform:translateX(-70px);}
+[data-anim="right"]{transform:translateX(70px);}
+[data-anim="scale"]{transform:scale(0.88);}
+[data-anim].in-view{opacity:1;transform:translate(0,0) scale(1);transition:opacity 0.9s var(--ease),transform 0.9s var(--ease);}
+[data-delay="1"]{transition-delay:0.1s;}[data-delay="2"]{transition-delay:0.2s;}[data-delay="3"]{transition-delay:0.3s;}
+[data-delay="4"]{transition-delay:0.4s;}[data-delay="5"]{transition-delay:0.5s;}[data-delay="6"]{transition-delay:0.6s;}
+section{padding:110px 0;}
+.section-light{background:var(--bg-light);}
+.section-dark{background:var(--bg-hero);}
+.section-head{max-width:640px;margin:0 auto 60px;text-align:center;}
+.section-head h2{font-size:clamp(30px,4vw,44px);letter-spacing:-1.5px;}
+.page-hero{position:relative;min-height:60vh;background:var(--bg-hero);display:flex;align-items:center;padding-top:130px;padding-bottom:60px;}
+.page-hero h1{font-size:clamp(38px,5.5vw,60px);letter-spacing:-2px;margin-bottom:16px;}
+.page-hero p{font-size:17px;max-width:520px;}
+footer{background:#070707;padding:60px 0 26px;}
+.footer-row1{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:26px;padding-bottom:34px;border-bottom:1px solid var(--border-dark);}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;list-style:none;}
+.footer-links a{font-size:13.5px;color:var(--text-muted-dark);}
+.footer-links a:hover{color:var(--gold);}
+.footer-meta{font-size:12.5px;color:var(--text-muted-dark);text-align:right;}
+.footer-row2{text-align:center;padding-top:26px;font-size:13px;color:var(--text-muted-dark);}
+.footer-note{text-align:center;font-size:11.5px;color:rgba(245,245,240,0.4);margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+/* 6 feature cards */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.feat-card{background:#FFFFFF;border:1px solid var(--border-light);border-radius:8px;padding:32px 26px;transition:transform 0.35s var(--ease);}
+.feat-card:hover{transform:translateY(-6px);}
+.feat-card .icon-badge{width:46px;height:46px;border-radius:50%;background:var(--gold-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.feat-card h3{font-size:18px;margin-bottom:10px;}
+.feat-card p{font-size:14.5px;}
+
+/* Roy's story */
+.story-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;}
+.story-grid h2{font-size:clamp(28px,4vw,38px);letter-spacing:-1.2px;margin-bottom:20px;}
+.story-grid p{font-size:16px;max-width:460px;}
+.story-visual svg{width:100%;height:auto;}
+
+/* Comparison table */
+.comp-table{width:100%;border-collapse:collapse;max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--border-light);border-radius:8px;overflow:hidden;}
+.comp-table th,.comp-table td{padding:16px 18px;text-align:center;font-size:14px;border-bottom:1px solid var(--border-light);}
+.comp-table th{font-family:'Space Grotesk';font-weight:700;background:var(--bg-hero);color:var(--text-offwhite);font-size:14.5px;}
+.comp-table td:first-child,.comp-table th:first-child{text-align:left;font-weight:500;color:var(--text-heading);}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table .yes{color:#3b6d11;font-weight:700;}
+.comp-table .no{color:#a32d2d;font-weight:700;}
+.comp-table .highlight{background:var(--gold-tint);}
+
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.testi-card{background:var(--card-dark);border:1px solid var(--border-dark);border-radius:6px;padding:30px;}
+.testi-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:14px;font-size:13px;}
+.testi-card p{font-size:14.5px;font-style:italic;margin-bottom:18px;}
+.testi-card .who{font-size:13px;color:var(--text-offwhite);font-weight:500;}
+.testi-card .who span{display:block;color:var(--text-muted-dark);font-weight:400;font-size:12.5px;margin-top:2px;}
+
+.cta-banner{background:var(--gold);padding:80px 0;text-align:center;}
+.cta-banner h2{color:#0A0A0A;font-size:clamp(28px,4vw,42px);letter-spacing:-1.5px;margin-bottom:14px;}
+.cta-banner p{color:rgba(10,10,10,0.7);margin-bottom:30px;font-size:16px;}
+.cta-banner .btn-gold{background:#0A0A0A;color:var(--gold);}
+.cta-banner .btn-gold:hover{background:#1E1E1E;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+@media (max-width:900px){
+  .feat-grid,.testi-grid{grid-template-columns:1fr;}
+  .story-grid{grid-template-columns:1fr;}
+  .comp-table{font-size:12px;}
+  .comp-table th,.comp-table td{padding:10px 8px;}
+  .nav-links{display:none;}
+  .nav-cta .btn{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{display:flex;}
+  .footer-row1{flex-direction:column;}
+  .footer-meta{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">Now taking July 2026 applications — limited spots available.<a href="apply.html">Apply now →</a></div>
+
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="RentWithRoy home">
+      <svg class="logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="circleGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#141414"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+        <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#D4B87A"/></linearGradient></defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad)" stroke="#2A2A2A"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="5" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="39" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="41" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(200,169,110,0.22)"/>
+        <line x1="22" y1="9" x2="22" y2="16" stroke="rgba(200,169,110,0.22)"/><line x1="11" y1="29" x2="17" y2="25" stroke="rgba(200,169,110,0.22)"/><line x1="33" y1="29" x2="27" y2="25" stroke="rgba(200,169,110,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,245,240,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#2A2A2A"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F5F0">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad)"/><circle cx="80" cy="39" r="1.6" fill="#C8A96E"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="why-us.html" class="active">Why us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="apply.html" class="btn btn-gold">Apply to rent →</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">×</button>
+  <a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="pricing.html">Pricing</a>
+  <a href="why-us.html">Why us</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+  <a href="apply.html" class="btn btn-gold" style="margin-top:12px;">Apply to rent →</a>
+</div>
+
+<header class="page-hero on-dark">
+  <div class="container">
+    <span class="eyebrow" data-anim="up">Why us</span>
+    <h1 data-anim="up" data-delay="1">Built for gig drivers. By someone who gets it.</h1>
+    <p data-anim="up" data-delay="2">Roy isn't a call centre. He's a driver who built the rental he wished existed.</p>
+  </div>
+</header>
+
+<section class="section-light">
+  <div class="container">
+    <div class="feat-grid">
+      <div class="feat-card" data-anim="scale" data-delay="1">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>No credit check</h3>
+        <p>Just a valid licence and a delivery platform account. Your credit history doesn't come into it.</p>
+      </div>
+      <div class="feat-card" data-anim="scale" data-delay="2">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h3>Flexible terms</h3>
+        <p>2-week minimum, then week-to-week. No locked-in annual contracts holding you to a car you might not need.</p>
+      </div>
+      <div class="feat-card" data-anim="scale" data-delay="3">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h3>Owner, not a call centre</h3>
+        <p>Deal directly with Roy. Real answers, real accountability — no ticket queues or scripted replies.</p>
+      </div>
+      <div class="feat-card" data-anim="scale" data-delay="4">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div>
+        <h3>Serviced and roadworthy</h3>
+        <p>Regular maintenance, valid rego, roadside assist included. You just drive.</p>
+      </div>
+      <div class="feat-card" data-anim="scale" data-delay="5">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><path d="M12 2L2 7v6c0 5 4 8 10 9 6-1 10-4 10-9V7z"/></svg></div>
+        <h3>Tarneit pickup</h3>
+        <p>Melbourne's west. Convenient for Wyndham, Werribee, and surrounding areas, with easy access from the CBD.</p>
+      </div>
+      <div class="feat-card" data-anim="scale" data-delay="6">
+        <div class="icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M7 14h4"/></svg></div>
+        <h3>Fully insured for delivery</h3>
+        <p>Commercial hire vehicle policy covers UberEats, Deliveroo, DoorDash, and personal use. Not rideshare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark on-dark">
+  <div class="container">
+    <div class="story-grid">
+      <div data-anim="left">
+        <span class="eyebrow">Roy's story</span>
+        <h2>Roy drives for Uber and DiDi. He's been in your position.</h2>
+        <p>Needing a car to earn, without a long-term commitment or credit check. He built RentWithRoy because the options available to new gig drivers in Melbourne weren't good enough.</p>
+      </div>
+      <div class="story-visual" data-anim="right">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="150" cy="150" r="110" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+          <circle cx="150" cy="150" r="80" fill="none" stroke="#C8A96E" stroke-width="1" opacity="0.4"/>
+          <circle cx="150" cy="150" r="50" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+          <line x1="40" y1="150" x2="260" y2="150" stroke="#2A2A2A" stroke-width="1"/>
+          <line x1="150" y1="40" x2="150" y2="260" stroke="#2A2A2A" stroke-width="1"/>
+          <circle cx="150" cy="150" r="6" fill="#C8A96E"/>
+          <circle cx="150" cy="70" r="4" fill="#C8A96E"/>
+          <circle cx="220" cy="150" r="4" fill="#C8A96E"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-light">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">Compare</span>
+      <h2 data-anim="up" data-delay="1">RentWithRoy vs the alternatives</h2>
+    </div>
+    <div style="overflow-x:auto;" data-anim="up">
+      <table class="comp-table">
+        <thead><tr><th>&nbsp;</th><th class="highlight">RentWithRoy</th><th>Big rental companies</th><th>Buying your own car</th></tr></thead>
+        <tbody>
+          <tr><td>Credit check</td><td class="highlight yes">Not required</td><td class="no">Required</td><td class="no">Loan approval</td></tr>
+          <tr><td>Minimum term</td><td class="highlight yes">2 weeks</td><td>Often 1 month+</td><td>N/A — full ownership</td></tr>
+          <tr><td>Insurance included</td><td class="highlight yes">Yes</td><td class="yes">Yes</td><td class="no">Arranged separately</td></tr>
+          <tr><td>Maintenance</td><td class="highlight yes">Included</td><td class="yes">Included</td><td class="no">Your cost</td></tr>
+          <tr><td>Weekly cost</td><td class="highlight yes">From $149</td><td>Often higher</td><td>Loan + running costs</td></tr>
+          <tr><td>Flexibility</td><td class="highlight yes">Week-to-week</td><td>Fixed contracts</td><td class="no">Locked in</td></tr>
+          <tr><td>Support</td><td class="highlight yes">Direct with Roy</td><td class="no">Call centre</td><td class="no">On your own</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark on-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">What drivers say</span>
+      <h2 data-anim="up" data-delay="1">Real people, real routes.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card" data-anim="up" data-delay="1">
+        <div class="stars">★★★★★</div>
+        <p>"Started delivering within 3 days of enquiring. Roy was super responsive and the car was in great shape. Couldn't have been easier."</p>
+        <div class="who">Priya M.<span>UberEats driver, Melbourne CBD</span></div>
+      </div>
+      <div class="testi-card" data-anim="up" data-delay="2">
+        <div class="stars">★★★★★</div>
+        <p>"No credit check was the reason I applied. Fast approval, Roy kept me updated throughout. Really fair and transparent."</p>
+        <div class="who">Daniel K.<span>Deliveroo driver, Werribee</span></div>
+      </div>
+      <div class="testi-card" data-anim="up" data-delay="3">
+        <div class="stars">★★★★★</div>
+        <p>"Better pricing than the big rental companies and you deal directly with the owner. Tarneit pickup was very easy to get to."</p>
+        <div class="who">Thuan N.<span>DoorDash driver, Hoppers Crossing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" data-anim="scale">
+  <div class="container">
+    <h2>Convinced? Let's get you moving.</h2>
+    <p>Apply in under 2 minutes. No credit check. Approval within 24 hours.</p>
+    <div class="cta-btns">
+      <a href="apply.html" class="btn btn-gold">Apply to rent →</a>
+      <a href="pricing.html" class="btn btn-outline on-light">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row1">
+      <svg class="logo footer-logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="circleGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#141414"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+        <linearGradient id="goldGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#C8A96E"/><stop offset="100%" stop-color="#D4B87A"/></linearGradient></defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad2)" stroke="#2A2A2A"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="5" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="39" y1="36" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/><line x1="41" y1="22" x2="22" y2="22" stroke="rgba(200,169,110,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(200,169,110,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad2)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,245,240,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#2A2A2A"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F5F0">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad2)"/><circle cx="80" cy="39" r="1.6" fill="#C8A96E"/>
+      </svg>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li><li><a href="how-it-works.html">How it works</a></li><li><a href="pricing.html">Pricing</a></li>
+        <li><a href="why-us.html">Why us</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-meta">ABN <!-- UPDATE: --> XX XXX XXX XXX<br>© 2026 RentWithRoy</div>
+    </div>
+    <div class="footer-row2">Pickup &amp; drop-off: Tarneit VIC 3029 · hello@rentwithroy.com.au <!-- UPDATE: --> · 0400 000 000 <!-- UPDATE: --></div>
+    <p class="footer-note">Commercial hire vehicle insurance held. Vehicles approved for food delivery and personal use only — not for Uber/DiDi rideshare.</p>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => { if (window.scrollY > 80) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); }, { passive: true });
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('[data-anim]').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('wa.me')) {
+    link.addEventListener('click', (e) => { e.preventDefault(); document.body.classList.add('page-exit'); setTimeout(() => { window.location.href = href; }, 250); });
+  }
+});
+document.body.classList.add('page-enter');
+</script>
+</body>
+</html>
