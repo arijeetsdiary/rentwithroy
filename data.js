@@ -27,7 +27,7 @@ window.RWR = {
   /* ---------- BUSINESS DETAILS ---------- */
   business: {
     name: "RentWithRoy",
-    logo: "",                           // LOGO: set to "assets/logo.png" once you have uploaded your file. Leave "" to keep the built-in logo.
+    logo: "assets/logo.png",            // LOGO: set to "assets/logo.png" once you have uploaded your file. Leave "" to keep the built-in logo.
     phone: "0400 000 000",              // UPDATE: shown on the site
     phoneIntl: "+61400000000",          // UPDATE: same number, international format, used for WhatsApp and tap-to-call
     email: "hello@rentwithroy.com.au",  // UPDATE
