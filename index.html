@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentWithRoy | Car Rentals for Gig Drivers in Tarneit, Melbourne</title>
+<meta name="description" content="Rent a car for UberEats, Deliveroo, DoorDash or personal use. No credit check, fast approval and flexible week-to-week terms. Based in Tarneit, VIC.">
+<meta property="og:title" content="RentWithRoy | Car Rentals for Gig Drivers">
+<meta property="og:description" content="No credit check. Fast approval. Flexible weekly rental. Pickup in Tarneit, Melbourne.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-hero:#0A2540;
+  --bg-dark2:#1A1F24;
+  --card-dark:#0F3057;
+  --border-dark:#26496B;
+  --gold:#1677FF;
+  --gold-hover:#3D8BFF;
+  --gold-tint:rgba(22,119,255,0.14);
+  --bg-light:#F5F9FF;
+  --card-light:#FFFFFF;
+  --border-light:#DCE6F2;
+  --text-heading:#0A2540;
+  --text-body:#3F4B57;
+  --text-muted:#5F7387;
+  --text-offwhite:#F5F9FF;
+  --text-muted-dark:#8DA2B5;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  background:var(--bg-light);
+  color:var(--text-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text-heading);line-height:1.08;}
+.on-dark h1,.on-dark h2,.on-dark h3,.on-dark h4{color:var(--text-offwhite);}
+p{color:var(--text-body);}
+.on-dark p{color:var(--text-muted-dark);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+.container{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{
+  font-family:'Inter',sans-serif;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;display:inline-block;margin-bottom:14px;
+}
+.btn{
+  font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;
+  padding:15px 30px;border-radius:2px;display:inline-flex;align-items:center;gap:8px;
+  transition:all 0.35s var(--ease);cursor:pointer;border:none;
+}
+.btn-gold{background:var(--gold);color:#FFFFFF;}
+.btn-gold:hover{background:var(--gold-hover);transform:translateY(-3px);box-shadow:0 12px 28px rgba(22,119,255,0.35);}
+.btn-outline{background:transparent;color:var(--text-offwhite);border:1px solid rgba(245,249,255,0.28);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.btn-outline.on-light{color:var(--text-heading);border-color:var(--border-light);}
+.btn-outline.on-light:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Page fade transition */
+body.page-exit{opacity:0;transition:opacity 0.25s ease;}
+body.page-enter{animation:fadeInBody 0.5s var(--ease);}
+@keyframes fadeInBody{from{opacity:0;}to{opacity:1;}}
+
+/* Announcement bar */
+.announce{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:var(--gold);color:#FFFFFF;text-align:center;
+  font-size:13px;padding:9px 16px;font-weight:500;
+}
+.announce a{font-weight:700;text-decoration:underline;text-underline-offset:2px;margin-left:6px;white-space:nowrap;}
+
+/* Nav */
+.nav{
+  position:fixed;top:36px;left:0;right:0;z-index:200;
+  padding:20px 0;transition:all 0.4s ease;
+}
+.nav.scrolled{
+  background:rgba(10,37,64,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  padding:14px 0;box-shadow:0 8px 30px rgba(0,0,0,0.25);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 32px;}
+.nav-links{display:flex;gap:34px;list-style:none;}
+.nav-links a{font-size:14px;color:var(--text-muted-dark);transition:color 0.25s ease;position:relative;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{display:flex;align-items:center;gap:20px;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.hamburger span{width:24px;height:2px;background:var(--text-offwhite);transition:0.3s;}
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,37,64,0.98);
+  z-index:250;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  transform:translateY(-100%);transition:transform 0.4s var(--ease);
+}
+.mobile-menu.open{transform:translateY(0);}
+.mobile-menu a{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--text-offwhite);}
+.mobile-menu .close-btn{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--text-offwhite);font-size:28px;cursor:pointer;}
+
+/* Logo */
+.logo{width:160px;}
+.logo.footer-logo{width:140px;}
+.logo-img{display:block;height:44px;width:auto;max-width:220px;}
+.logo-img.footer{height:40px;}
+
+/* Hero */
+.hero{
+  position:relative;min-height:100vh;background:var(--bg-hero);
+  display:flex;align-items:center;overflow:hidden;padding-top:80px;
+}
+.hero-bg-pattern{position:absolute;inset:0;opacity:0.04;pointer-events:none;}
+.hero-bg-pattern svg{width:140%;height:140%;animation:drift 22s linear infinite;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(-60px,-40px);}}
+.hero-inner{
+  position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:100px 32px 60px;
+  display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;width:100%;
+}
+.hero-word{display:inline-block;opacity:0;transform:translateY(30px);}
+.hero-headline{
+  font-size:clamp(40px,6vw,74px);letter-spacing:-2.5px;color:var(--text-offwhite);margin-bottom:22px;
+}
+.hero-sub{
+  font-size:18px;color:var(--text-muted-dark);max-width:460px;margin-bottom:34px;
+  opacity:0;transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);transform:translateY(16px);
+}
+.hero-sub.shown{opacity:1;transform:translateY(0);}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px;}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.stat-pill{opacity:0;transform:translateY(20px);}
+.stat-pill .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;color:var(--gold);}
+.stat-pill .label{font-size:12px;color:var(--text-muted-dark);letter-spacing:0.5px;}
+.hero-visual{position:relative;transform:translateX(60px);opacity:0;}
+.car-float{animation:floaty 4.5s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--text-muted-dark);font-size:11px;letter-spacing:1.5px;
+}
+.scroll-hint .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:scrollpulse 1.8s ease-in-out infinite;}
+@keyframes scrollpulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* Scroll reveal */
+[data-anim]{opacity:0;}
+[data-anim="up"]{transform:translateY(50px);}
+[data-anim="left"]{transform:translateX(-70px);}
+[data-anim="right"]{transform:translateX(70px);}
+[data-anim="scale"]{transform:scale(0.88);}
+[data-anim].in-view{
+  opacity:1;transform:translate(0,0) scale(1);
+  transition:opacity 0.9s var(--ease),transform 0.9s var(--ease);
+}
+[data-delay="1"]{transition-delay:0.1s;}
+[data-delay="2"]{transition-delay:0.2s;}
+[data-delay="3"]{transition-delay:0.3s;}
+[data-delay="4"]{transition-delay:0.4s;}
+[data-delay="5"]{transition-delay:0.5s;}
+[data-delay="6"]{transition-delay:0.6s;}
+
+/* Sections generic */
+section{padding:110px 0;}
+.section-light{background:var(--bg-light);}
+.section-dark{background:var(--bg-hero);}
+.section-head{max-width:640px;margin-bottom:60px;}
+.section-head h2{font-size:clamp(30px,4vw,44px);letter-spacing:-1.5px;}
+
+/* Trust bar */
+.trust-bar{background:#FFFFFF;padding:34px 0;border-bottom:1px solid var(--border-light);}
+.trust-list{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;list-style:none;}
+.trust-list li{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--text-body);}
+.pip{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* Step cards */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.step-card{padding:0 20px;position:relative;}
+.step-card:not(:last-child)::after{
+  content:'';position:absolute;top:26px;right:-10px;width:calc(100% - 20px);height:0;
+  border-top:2px dashed rgba(22,119,255,0.35);z-index:0;
+}
+.step-num{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--gold);
+  width:52px;height:52px;border:1px solid var(--border-light);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--bg-light);
+  position:relative;z-index:1;transition:transform 0.35s var(--ease);
+}
+.step-card:hover .step-num{transform:scale(1.12);}
+.step-card h3{font-size:18px;margin-bottom:10px;}
+.step-card p{font-size:14.5px;}
+.link-more{color:var(--gold);font-weight:500;font-size:14px;display:inline-flex;align-items:center;gap:6px;margin-top:18px;}
+
+/* Why us cards */
+.why-grid-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.why-card{
+  background:var(--card-dark);border:1px solid var(--border-dark);border-radius:6px;padding:34px 28px;
+  transition:transform 0.35s var(--ease);
+}
+.why-card:hover{transform:translateY(-6px);border-color:var(--gold);}
+.why-card .icon-badge{width:44px;height:44px;border-radius:50%;background:var(--gold-tint);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.why-card h3{font-size:18px;margin-bottom:10px;}
+.why-card p{font-size:14.5px;}
+
+/* Stats counter */
+.stats-band{padding:90px 0;}
+.stats-band.dark{background:var(--bg-dark2);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;}
+.stat-item .count{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,4vw,52px);color:var(--gold);letter-spacing:-1px;}
+.stat-item .label{font-size:13px;color:var(--text-muted-dark);letter-spacing:0.5px;margin-top:6px;}
+
+/* Pricing preview */
+.pricing-preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
+.price-card{
+  background:#FFFFFF;border:1px solid var(--border-light);border-radius:8px;padding:38px;position:relative;
+}
+.price-card.featured{border:2px solid var(--gold);}
+.badge{
+  position:absolute;top:-13px;right:28px;background:var(--gold);color:#FFFFFF;font-size:11px;font-weight:700;
+  letter-spacing:1px;padding:5px 12px;border-radius:20px;font-family:'Space Grotesk',sans-serif;
+}
+.price-card h3{font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:14px;}
+.price-card .amount{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;letter-spacing:-1.5px;color:var(--text-heading);}
+.price-card .amount span{font-size:15px;font-family:'Inter',sans-serif;font-weight:400;color:var(--text-muted);}
+.price-card .excl{font-size:12px;color:var(--text-muted);margin:6px 0 22px;}
+
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.testi-card{background:var(--card-dark);border:1px solid var(--border-dark);border-radius:6px;padding:30px;}
+.testi-card .stars{color:var(--gold);letter-spacing:2px;margin-bottom:14px;font-size:13px;}
+.testi-card p{font-size:14.5px;font-style:italic;margin-bottom:18px;}
+.testi-card .who{font-size:13px;color:var(--text-offwhite);font-weight:500;}
+.testi-card .who span{display:block;color:var(--text-muted-dark);font-weight:400;font-size:12.5px;margin-top:2px;}
+
+/* CTA banner */
+.cta-banner{background:var(--gold);padding:80px 0;text-align:center;}
+.cta-banner h2{color:#FFFFFF;font-size:clamp(28px,4vw,42px);letter-spacing:-1.5px;margin-bottom:14px;}
+.cta-banner p{color:rgba(255,255,255,0.9);margin-bottom:30px;font-size:16px;}
+.cta-banner .btn-gold{background:#FFFFFF;color:#0A2540;}
+.cta-banner .btn-gold:hover{background:#F5F9FF;box-shadow:0 12px 28px rgba(10,37,64,0.3);}
+.cta-banner .btn-outline.on-light{color:#FFFFFF;border-color:rgba(255,255,255,0.65);}
+.cta-banner .btn-outline.on-light:hover{background:rgba(255,255,255,0.14);color:#FFFFFF;border-color:#FFFFFF;}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* Footer */
+footer{background:#1A1F24;padding:60px 0 26px;}
+.footer-row1{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:26px;padding-bottom:34px;border-bottom:1px solid var(--border-dark);}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;list-style:none;}
+.footer-links a{font-size:13.5px;color:var(--text-muted-dark);}
+.footer-links a:hover{color:var(--gold);}
+.footer-meta{font-size:12.5px;color:var(--text-muted-dark);text-align:right;}
+.footer-row2{text-align:center;padding-top:26px;font-size:13px;color:var(--text-muted-dark);}
+.footer-note{text-align:center;font-size:11.5px;color:rgba(245,249,255,0.4);margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto;}
+
+/* Fleet */
+.fleet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;}
+.fleet-card{background:var(--card-light);border:1px solid var(--border-light);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.35s var(--ease),border-color 0.35s ease,box-shadow 0.35s ease;}
+.fleet-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(10,37,64,0.12);}
+.fleet-visual{position:relative;background:var(--bg-hero);padding:34px 22px 16px;display:flex;align-items:center;justify-content:center;min-height:170px;}
+.fleet-visual svg{width:100%;max-width:290px;height:auto;}
+.fleet-visual.has-photo{padding:0;}
+.fleet-visual img{width:100%;height:190px;object-fit:cover;}
+.status-pill{position:absolute;top:14px;left:14px;font-size:11px;letter-spacing:0.8px;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:20px;background:var(--gold-tint);color:#F5F9FF;border:1px solid var(--gold);}
+.fleet-card.is-unavailable .status-pill{background:transparent;border-color:var(--border-dark);color:var(--text-muted-dark);}
+.fleet-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.fleet-body h3{font-size:19px;}
+.fleet-sub{font-size:13.5px;color:var(--text-muted);}
+.fleet-spec{min-height:2.8em;}
+.fleet-price{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--text-heading);margin-top:6px;}
+.fleet-price span{font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:var(--text-muted);}
+.fleet-body .btn{margin-top:auto;justify-content:center;padding:12px 20px;font-size:14px;}
+
+@media (max-width:900px){
+  .steps-grid,.why-grid-preview,.stats-grid,.pricing-preview-grid,.testi-grid{grid-template-columns:1fr;}
+  .step-card::after{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .nav-links{display:none;}
+  .nav-cta .btn{display:none;}
+  .hamburger{display:flex;}
+  .mobile-menu{display:flex;}
+  .footer-row1{flex-direction:column;}
+  .footer-meta{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement bar -->
+<div class="announce"><span data-d="announcement">Now taking July 2026 applications. Limited spots available.</span><a href="apply.html" data-d="announcementCta">Apply now →</a></div>
+
+<!-- Nav -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="RentWithRoy home" data-logo>
+      <svg class="logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="circleGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0C2B4A"/><stop offset="100%" stop-color="#123A63"/>
+          </linearGradient>
+          <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1677FF"/><stop offset="100%" stop-color="#3D8BFF"/>
+          </linearGradient>
+        </defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad)" stroke="#26496B" stroke-width="1"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="5" y1="36" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="39" y1="36" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="41" y1="22" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(22,119,255,0.22)"/>
+        <line x1="22" y1="9" x2="22" y2="16" stroke="rgba(22,119,255,0.22)"/>
+        <line x1="11" y1="29" x2="17" y2="25" stroke="rgba(22,119,255,0.22)"/>
+        <line x1="33" y1="29" x2="27" y2="25" stroke="rgba(22,119,255,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,249,255,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#26496B"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F9FF">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad)"/>
+        <circle cx="80" cy="39" r="1.6" fill="#1677FF"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="why-us.html">Why us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="apply.html" class="btn btn-gold">Apply to rent →</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">×</button>
+  <a href="index.html">Home</a>
+  <a href="how-it-works.html">How it works</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="why-us.html">Why us</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+  <a href="apply.html" class="btn btn-gold" style="margin-top:12px;">Apply to rent →</a>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-bg-pattern">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#1677FF" stroke-width="1" fill="none">
+        <line x1="0" y1="40" x2="400" y2="0"/><line x1="0" y1="120" x2="400" y2="80"/>
+        <line x1="0" y1="200" x2="400" y2="160"/><line x1="0" y1="280" x2="400" y2="240"/>
+        <line x1="0" y1="360" x2="400" y2="320"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow" data-anim="up">Tarneit, Melbourne VIC</span>
+      <h1 class="hero-headline" id="heroHeadline">Your car to earn with. No ownership. No stress.</h1>
+      <p class="hero-sub" id="heroSub">Rent a reliable car for UberEats, Deliveroo or DoorDash. No credit check, no long contract. Just a car and a plan to earn.</p>
+      <div class="hero-ctas" data-anim="up" data-delay="2">
+        <a href="apply.html" class="btn btn-gold">Apply to rent →</a>
+        <a href="how-it-works.html" class="btn btn-outline">See how it works</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill" data-anim="up" data-delay="1"><div class="num" data-d="headlineWeeklyWk">$159/wk</div><div class="label">Starting rate</div></div>
+        <div class="stat-pill" data-anim="up" data-delay="2"><div class="num" data-d="approvalHoursLabel">24hrs</div><div class="label">Approval time</div></div>
+        <div class="stat-pill" data-anim="up" data-delay="3"><div class="num" data-d="minTermLabel">2-week</div><div class="label">Minimum term</div></div>
+        <div class="stat-pill" data-anim="up" data-delay="4"><div class="num" data-d="locationShort">Tarneit VIC</div><div class="label">Pickup location</div></div>
+      </div>
+    </div>
+    <div class="hero-visual" id="heroVisual">
+      <svg class="car-float" viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="190" cy="185" rx="150" ry="14" fill="rgba(0,0,0,0.4)"/>
+        <path d="M40 140 Q55 90 110 82 L260 82 Q305 88 330 140 L330 165 L40 165 Z" fill="#0F3057" stroke="#1677FF" stroke-width="1.5"/>
+        <path d="M110 84 Q130 55 175 54 L225 54 Q255 56 268 84 Z" fill="#0C2B4A" stroke="#1677FF" stroke-width="1.2"/>
+        <line x1="192" y1="55" x2="192" y2="84" stroke="#1677FF" stroke-width="1"/>
+        <circle cx="105" cy="165" r="26" fill="#0A2540" stroke="#26496B" stroke-width="4"/>
+        <circle cx="105" cy="165" r="9" fill="#1677FF"/>
+        <circle cx="270" cy="165" r="26" fill="#0A2540" stroke="#26496B" stroke-width="4"/>
+        <circle cx="270" cy="165" r="9" fill="#1677FF"/>
+        <rect x="45" y="118" width="30" height="14" rx="3" fill="#1677FF" opacity="0.85"/>
+        <rect x="300" y="118" width="26" height="14" rx="3" fill="#F5F9FF" opacity="0.65"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><div class="line"></div></div>
+</header>
+
+<!-- Trust bar -->
+<section class="trust-bar" style="padding-top:34px;padding-bottom:34px;">
+  <div class="container">
+    <ul class="trust-list">
+      <li data-anim="up" data-delay="1"><span class="pip"></span>Commercially insured</li>
+      <li data-anim="up" data-delay="2"><span class="pip"></span>Signed rental agreement</li>
+      <li data-anim="up" data-delay="3"><span class="pip"></span>Maintained &amp; serviced</li>
+      <li data-anim="up" data-delay="4"><span class="pip"></span>Direct owner support</li>
+      <li data-anim="up" data-delay="5"><span class="pip"></span>No credit check</li>
+    </ul>
+  </div>
+</section>
+
+<!-- How it works preview -->
+<section class="section-light">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">How it works</span>
+      <h2 data-anim="up" data-delay="1">Four steps. Three days. You're earning.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card" data-anim="up" data-delay="1">
+        <div class="step-num">01</div>
+        <h3>Apply online</h3>
+        <p>Fill in the short form. Takes under 2 minutes, no paperwork.</p>
+      </div>
+      <div class="step-card" data-anim="up" data-delay="2">
+        <div class="step-num">02</div>
+        <h3>Quick approval</h3>
+        <p>Roy reviews your licence and platform account within <span data-d="approvalHours">24</span> hours.</p>
+      </div>
+      <div class="step-card" data-anim="up" data-delay="3">
+        <div class="step-num">03</div>
+        <h3>Sign and collect</h3>
+        <p>Sign the agreement digitally, collect the car in Tarneit VIC.</p>
+      </div>
+      <div class="step-card" data-anim="up" data-delay="4">
+        <div class="step-num">04</div>
+        <h3>Start earning</h3>
+        <p>Deliver with UberEats, Deliveroo, DoorDash, or drive personally.</p>
+      </div>
+    </div>
+    <a href="how-it-works.html" class="link-more" data-anim="up">See full details →</a>
+  </div>
+</section>
+
+<!-- Why choose us preview -->
+<section class="section-dark on-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">Why choose us</span>
+      <h2 data-anim="up" data-delay="1">Built for gig drivers. By someone who gets it.</h2>
+    </div>
+    <div class="why-grid-preview">
+      <div class="why-card" data-anim="scale" data-delay="1">
+        <div class="icon-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h3>No credit check</h3>
+        <p>Just a valid licence and a delivery platform account.</p>
+      </div>
+      <div class="why-card" data-anim="scale" data-delay="2">
+        <div class="icon-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
+        </div>
+        <h3>Flexible terms</h3>
+        <p>2-week minimum, then week-to-week. No locked-in contracts.</p>
+      </div>
+      <div class="why-card" data-anim="scale" data-delay="3">
+        <div class="icon-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1677FF" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </div>
+        <h3>Owner, not a call centre</h3>
+        <p>Deal directly with Roy. Real answers, real accountability.</p>
+      </div>
+    </div>
+    <a href="why-us.html" class="link-more" data-anim="up">See all reasons →</a>
+  </div>
+</section>
+
+<!-- Fleet (rendered from data.js) -->
+<section class="section-light" id="fleet">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">Our fleet</span>
+      <h2 data-anim="up" data-delay="1">Pick your car.</h2>
+    </div>
+    <div class="fleet-grid" data-fleet="grid"></div>
+  </div>
+</section>
+
+<!-- Stats counter -->
+<section class="stats-band dark">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" data-anim="up" data-delay="1"><div class="count" data-target="4" data-d-target="availableCount">0</div><div class="label">Cars available</div></div>
+      <div class="stat-item" data-anim="up" data-delay="2"><div class="count" data-target="159" data-d-target="headlineWeeklyNum" data-prefix="$" data-suffix="/wk">0</div><div class="label">Starting from</div></div>
+      <div class="stat-item" data-anim="up" data-delay="3"><div class="count" data-target="24" data-d-target="approvalHours" data-suffix="hr">0</div><div class="label">Approval time</div></div>
+      <div class="stat-item" data-anim="up" data-delay="4"><div class="count" data-target="7" data-d-target="supportDays" data-suffix="d">0</div><div class="label">Support, every week</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing preview -->
+<section class="section-light">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">Pricing</span>
+      <h2 data-anim="up" data-delay="1">Simple, honest rates.</h2>
+    </div>
+    <div class="pricing-preview-grid" data-plans="preview"></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section-dark on-dark">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-anim="up">What drivers say</span>
+      <h2 data-anim="up" data-delay="1">Real people, real routes.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card" data-anim="up" data-delay="1">
+        <div class="stars">★★★★★</div>
+        <p>"Started delivering within 3 days of enquiring. Roy was super responsive and the car was in great shape. Couldn't have been easier."</p>
+        <div class="who">Priya M.<span>UberEats driver, Melbourne CBD</span></div>
+      </div>
+      <div class="testi-card" data-anim="up" data-delay="2">
+        <div class="stars">★★★★★</div>
+        <p>"No credit check was the reason I applied. Fast approval, Roy kept me updated throughout. Really fair and transparent."</p>
+        <div class="who">Daniel K.<span>Deliveroo driver, Werribee</span></div>
+      </div>
+      <div class="testi-card" data-anim="up" data-delay="3">
+        <div class="stars">★★★★★</div>
+        <p>"Better pricing than the big rental companies and you deal directly with the owner. Tarneit pickup was very easy to get to."</p>
+        <div class="who">Thuan N.<span>DoorDash driver, Hoppers Crossing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA banner -->
+<section class="cta-banner" data-anim="scale">
+  <div class="container">
+    <h2>Ready to get on the road?</h2>
+    <p>Apply in under 2 minutes. No credit check. Approval within <span data-d="approvalHours">24</span> hours.</p>
+    <div class="cta-btns">
+      <a href="apply.html" class="btn btn-gold">Apply to rent →</a>
+      <a href="contact.html" class="btn btn-outline on-light">Talk to Roy</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-row1">
+      <span data-logo data-logo-size="footer"><svg class="logo footer-logo" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="circleGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0C2B4A"/><stop offset="100%" stop-color="#123A63"/></linearGradient>
+          <linearGradient id="goldGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1677FF"/><stop offset="100%" stop-color="#3D8BFF"/></linearGradient>
+        </defs>
+        <circle cx="22" cy="22" r="20" fill="url(#circleGrad2)" stroke="#26496B"/>
+        <line x1="5" y1="8" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/><line x1="5" y1="36" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="39" y1="8" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/><line x1="39" y1="36" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <line x1="3" y1="22" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/><line x1="41" y1="22" x2="22" y2="22" stroke="rgba(22,119,255,0.35)"/>
+        <circle cx="22" cy="22" r="14" fill="none" stroke="rgba(22,119,255,0.22)"/>
+        <circle cx="22" cy="22" r="2.6" fill="url(#goldGrad2)"/>
+        <text x="50" y="15" font-family="Inter, sans-serif" font-size="7.5" letter-spacing="2.5" font-weight="300" fill="rgba(245,249,255,0.65)">RENT WITH</text>
+        <line x1="50" y1="20" x2="88" y2="20" stroke="#26496B"/>
+        <text x="50" y="35" font-family="Space Grotesk, sans-serif" font-size="19" font-weight="700" fill="#F5F9FF">ROY</text>
+        <rect x="50" y="38" width="26" height="2" fill="url(#goldGrad2)"/>
+        <circle cx="80" cy="39" r="1.6" fill="#1677FF"/>
+      </svg></span>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="why-us.html">Why us</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-meta">ABN <span data-d="abn">XX XXX XXX XXX</span><br>© <span data-d="year">2026</span> <span data-d="name">RentWithRoy</span></div>
+    </div>
+    <div class="footer-row2">Pickup &amp; drop-off: <span data-d="location">Tarneit VIC 3029</span> · <a href="mailto:hello@rentwithroy.com.au" data-d-href="mailto" data-d="email">hello@rentwithroy.com.au</a> · <a href="tel:+61400000000" data-d-href="tel" data-d="phone">0400 000 000</a></div>
+    <p class="footer-note">Commercial hire vehicle insurance held. Vehicles approved for food delivery and personal use only. Not for Uber/DiDi rideshare.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+// Nav scroll behaviour
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+
+// Mobile menu
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+// Scroll reveal via IntersectionObserver
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('[data-anim]').forEach(el => revealObserver.observe(el));
+
+// Hero word-by-word animation
+const headline = document.getElementById('heroHeadline');
+const text = headline.textContent;
+headline.innerHTML = text.split(' ').map(w => `<span class="hero-word">${w}</span>`).join(' ');
+const words = headline.querySelectorAll('.hero-word');
+words.forEach((w, i) => {
+  setTimeout(() => {
+    w.style.transition = 'transform 0.75s cubic-bezier(0.16,1,0.3,1), opacity 0.75s cubic-bezier(0.16,1,0.3,1)';
+    w.style.opacity = '1';
+    w.style.transform = 'translateY(0)';
+  }, 400 + i * 110);
+});
+setTimeout(() => {
+  document.getElementById('heroSub').classList.add('shown');
+}, 400 + words.length * 110 + 150);
+setTimeout(() => {
+  const visual = document.getElementById('heroVisual');
+  visual.style.transition = 'transform 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.9s cubic-bezier(0.16,1,0.3,1)';
+  visual.style.transform = 'translateX(0)';
+  visual.style.opacity = '1';
+}, 500);
+
+// Parallax hero
+const heroVisualEl = document.getElementById('heroVisual');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y < window.innerHeight) {
+    document.querySelector('.hero-inner').style.transform = `translateY(${y * 0.15}px)`;
+  }
+}, { passive: true });
+
+// Counter animation
+function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+const counters = document.querySelectorAll('.count');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const val = Math.round(target * easeOutCubic(progress));
+        el.textContent = prefix + val + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.4 });
+counters.forEach(c => counterObserver.observe(c));
+
+// Page transition on internal links
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('tel') && !href.startsWith('wa.me')) {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.body.classList.add('page-exit');
+      setTimeout(() => { window.location.href = href; }, 250);
+    });
+  }
+});
+document.body.classList.add('page-enter');
+</script>
+</body>
+</html>
